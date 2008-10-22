@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay >
+<overlay id="menu-bar-overlay"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+
+<script type="text/javascript">
+<![CDATA[
+	function openExternalURL(url_to_open)
+	{
+		var ioservice = Components.classes["@mozilla.org/network/io-service;1"]
+		                          .getService(Components.interfaces.nsIIOService);
+
+		var uriToOpen = ioservice.newURI(url_to_open, null, null);
+
+		var extps = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
+		                      .getService(Components.interfaces.nsIExternalProtocolService);
+
+		// now, open it!
+		extps.loadURI(uriToOpen, null);
+		return;
+	};
+	
+		
+	nsContextMenu.prototype.context_externalopenlink = function(){
+		try{openExternalURL(this.linkURL);}catch(e){alert("Error: "+e)}
+	};
+	
+	nsContextMenu.prototype.initOpenItems_pre_choosy = nsContextMenu.prototype.initOpenItems;
+	nsContextMenu.prototype.initOpenItems = function(){
+		this.showItem( "context-externalopenlink", this.onSaveableLink || ( this.inDirList && this.onLink ) );
+		this.initOpenItems_pre_choosy();
+	};
+]]>
+</script>
+
+
+
+<popup id="contentAreaContextMenu">
+	<menuitem position="2"
+			  id="context-externalopenlink"
+              label="Open Link in Another Browser"
+              oncommand="gContextMenu.context_externalopenlink()"/>
+</popup>
+
+</overlay>

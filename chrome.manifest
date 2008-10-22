@@ -1,0 +1,3 @@
+content choosy content/
+# Firefox
+overlay	chrome://browser/content/browser.xul chrome://choosy/content/pupup-overlay.xul
