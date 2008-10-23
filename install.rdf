@@ -9,7 +9,7 @@
 
         <em:creator>Tom Lea</em:creator>
 
-        <em:description>Allows Firefox Users of Choosy OS-X to launch links in other browsers.</em:description>
+        <em:description>Allows Firefox users of Choosy OS-X to launch links in other browsers.</em:description>
 		<em:targetApplication>
 			<Description>
 			    <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
