@@ -6,5 +6,5 @@ task :default => [:package]
 XPIPackageTask.new("choosy-osx-plugin") do |p|
   p.package_files.add('chrome.manifest')
   p.package_files.add('install.rdf')
-  p.package_files.add('content/*.xul')
+  p.package_files.add('content/*.*')
 end
